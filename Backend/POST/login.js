@@ -2,8 +2,6 @@ const { application } = require('express');
 const { isValidObjectId } = require('mongoose');
 const { count } = require('../models/Schema');
 const users = require('../models/Schema');
-const mongoose = require('mongoose')
-const ObjectId = mongoose.Types.ObjectId;
 
 
 const express = require('express');
@@ -30,15 +28,27 @@ mongoose.connect('mongodb+srv://test:test@cluster0.sodaz.mongodb.net/myFirstData
 
 
 //recup le form POST
-expr.post('/submit-form', (req, res) => {
-    //const email = req.body.email
-    //const password = req.body.password
-    const email = "lbastien"
-    const password = "e2HjmPS6EM"
-
-    const emailBD = await tx.find({ "blockId.data" : result.block.header.id.data});
-    const passwordBD = await tx.find({ "blockId.data" : result.block.header.id.data});
-
-
-    res.end()
+expr.post('/test', (req, res) => {
+    //const emailrecup = req.body.email
+    //const passwordrecup = req.body.password
+    const emailrecup = "lbastien"
+    const passwordrecup = "e2HjmPS6EM"
+    console.log(emailrecup)
+    console.log(passwordrecup)
+    users.findOne({email: emailrecup})
+        .then(user =>{
+            if(!user){
+                console.log(user)
+                return res.status(400).json({ error: 'utilisateur non trouvé !'});
+            }
+            bcrypt.compare(passwordrecup, user.password)
+                .then(valid =>{
+                    if(!valid) {
+                        return res.status(400).json({ error : 'Mot de passe incorrect !'});
+                    }
+                    res.status(200)
+                })
+                .catch(error => res.status(500).json({ error }));
+        })
+        .catch(error => res.status(500).json({ error }));
     })
