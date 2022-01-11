@@ -6,6 +6,9 @@ const usersschema = mongoose.Schema({
   password: { type: String, required: true },
   session_id: { type: Number, required: true },
   session_deadline: { type: Number, required: true },
+},
+{
+  collection: "users"
 });
 
 module.exports = mongoose.model('usersmodel', usersschema);

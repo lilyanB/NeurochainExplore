@@ -20,7 +20,7 @@ expr.listen(4000, ()=>{
 //connect to DB
 const mongoose = require('mongoose');
 const { exit } = require('process');
-mongoose.connect('mongodb+srv://test:test@cluster0.sodaz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority').then(() => {
+mongoose.connect('mongodb+srv://test:test@cluster0.sodaz.mongodb.net/loginNeurochain?retryWrites=true&w=majority').then(() => {
     console.log('Connexion success')
 }).catch((error) => {
     console.log(error);
@@ -48,7 +48,7 @@ expr.post('/test', (req, res) => {
                     }
                     res.status(200)
                 })
-                .catch(error => res.status(500).json({ error }));
+                .catch(error => res.status(500).json({ error: 'Mot de passe bug' }));
         })
-        .catch(error => res.status(500).json({ error }));
+        .catch(error => res.status(500).json({ error: 'tous bug' }));
     })
