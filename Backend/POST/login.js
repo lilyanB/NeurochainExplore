@@ -26,29 +26,30 @@ mongoose.connect('mongodb+srv://test:test@cluster0.sodaz.mongodb.net/loginNeuroc
     console.log(error);
 })
 
+bodyParser = require('body-parser').json();
 
 //recup le form POST
-expr.post('/test', (req, res) => {
-    //const emailrecup = req.body.email
-    //const passwordrecup = req.body.password
-    const emailrecup = "lbastien"
-    const passwordrecup = "e2HjmPS6EM"
-    console.log(emailrecup)
-    console.log(passwordrecup)
+expr.post('/test', bodyParser, (req, res) => {
+    const emailrecup = req.body.email
+    const passwordrecup = req.body.password
+    //console.log(emailrecup)
+    //console.log(passwordrecup)
     users.findOne({email: emailrecup})
         .then(user =>{
-            if(!user){
+            console.log(user)
+            //console.log(user.email)
+            if(user == null){
                 console.log(user)
                 return res.status(400).json({ error: 'utilisateur non trouvé !'});
             }
-            bcrypt.compare(passwordrecup, user.password)
-                .then(valid =>{
-                    if(!valid) {
-                        return res.status(400).json({ error : 'Mot de passe incorrect !'});
-                    }
-                    res.status(200)
-                })
-                .catch(error => res.status(500).json({ error: 'Mot de passe bug' }));
+            if(user.password!=passwordrecup){
+                return res.status(400).json({ error : 'Mot de passe incorrect !'});
+            }
+            if( user.email==emailrecup && user.password==passwordrecup){
+                return res.status(200).json({ error :"c'est ok !"});
+            }
+            else{
+                return res.status(500).json({ error: 'tous bug' });
+            }
         })
-        .catch(error => res.status(500).json({ error: 'tous bug' }));
     })
