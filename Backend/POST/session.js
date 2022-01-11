@@ -13,8 +13,8 @@ expr.use(express.urlencoded({
     }))
 
 // app disponible sur le port 4000
-expr.listen(4000, ()=>{
-    console.log('App listening on port 4000')
+expr.listen(5000, ()=>{
+    console.log('App listening on port 5000')
 })
 
 
@@ -31,22 +31,22 @@ bodyParser = require('body-parser').json();
 
 //recup le form POST
 expr.post('/test', bodyParser, (req, res) => {
-    const emailrecup = req.body.email
-    const passwordrecup = req.body.password
+    const session_idrecup = req.body.session_id
+    const session_deadlinerecup = req.body.session_deadline
     //console.log(emailrecup)
     //console.log(passwordrecup)
-    users.findOne({email: emailrecup})
-        .then(user =>{
-            console.log(user)
+    users.findOne({session_id: session_idrecup})
+        .then(infoSession =>{
+            console.log(infoSession)
             //console.log(user.email)
-            if(user == null){
+            if(infoSession.session_id == null){
                 console.log(user)
                 return res.status(400).json({ error: 'utilisateur non trouvé !'});
             }
-            if(user.password!=passwordrecup){
-                return res.status(400).json({ error : 'Mot de passe incorrect !'});
+            if(infoSession.session_id>aujourdhui){
+                return res.status(400).json({ error : 'deadline dépassé !'});
             }
-            if( user.email==emailrecup && user.password==passwordrecup){
+            if( infoSession.session_id==session_idrecup && infoSession.session_deadlinerecup==session_deadlinerecup){
                 return res.status(200).json({ error :"c'est ok !"});
             }
             else{
