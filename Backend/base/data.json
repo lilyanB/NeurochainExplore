@@ -1,0 +1,7 @@
+[
+    { "_id" : 1, "email" : "lbastien", "password" : "e2HjmPS6EM", "session_id" : "1", "session_deadline" : "2023-12-09"},
+    { "_id" : 2, "email" : "sbarbarin", "password" : "d7smWW9WxJ", "session_id" : "2", "session_deadline" : "2023-12-09"},
+    { "_id" : 3, "email" : "abattut", "password" : "Gkj5dSgX5W", "session_id" : "3", "session_deadline" : "2023-12-09"},
+    { "_id" : 4, "email" : "gdesgeans", "password" : "eHhkE6PQ3M", "session_id" : "4", "session_deadline" : "2023-12-09"},
+    { "_id" : 5, "email" : "atardy", "password" : "ThzmFfvj4E", "session_id" : "5", "session_deadline" : "2023-12-09"}
+]

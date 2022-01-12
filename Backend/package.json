@@ -1,0 +1,15 @@
+{
+  "name": "myProject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "login.js",
+  "scripts": {
+    "log": "nodemon POST/login.js",
+    "session": "nodemon POST/session.js"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.1.6",
+    "nodemon": "^2.0.15"
+  }
+}
