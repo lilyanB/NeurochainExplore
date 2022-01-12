@@ -33,10 +33,8 @@ bodyParser = require('body-parser').json();
 expr.post('/test', bodyParser, (req, res) => {
     const session_idrecup = req.body.session_id
     const session_deadlinerecup = req.body.session_deadline
-    //const session_idrecup="956220"
-    //const session_deadlinerecup="2023-12-09"
-    console.log(session_idrecup)
-    console.log(session_deadlinerecup)
+    //console.log(session_idrecup)
+    //console.log(session_deadlinerecup)
     users.findOne({session_id: session_idrecup})
         .then(infoSession =>{
             console.log(infoSession)
