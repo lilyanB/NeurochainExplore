@@ -33,20 +33,24 @@ bodyParser = require('body-parser').json();
 expr.post('/test', bodyParser, (req, res) => {
     const session_idrecup = req.body.session_id
     const session_deadlinerecup = req.body.session_deadline
-    //console.log(emailrecup)
-    //console.log(passwordrecup)
+    //const session_idrecup="956220"
+    //const session_deadlinerecup="2023-12-09"
+    console.log(session_idrecup)
+    console.log(session_deadlinerecup)
     users.findOne({session_id: session_idrecup})
         .then(infoSession =>{
             console.log(infoSession)
-            //console.log(user.email)
+            console.log(infoSession.session_deadline)
+            console.log(infoSession.session_id)
+            console.log(new Date())
             if(infoSession.session_id == null){
-                console.log(user)
-                return res.status(400).json({ error: 'utilisateur non trouvé !'});
+                console.log(infoSession)
+                return res.status(400).json({ error: 'session non trouvé !'});
             }
-            if(infoSession.session_id>aujourdhui){
+            if(infoSession.session_deadline<new Date()){
                 return res.status(400).json({ error : 'deadline dépassé !'});
             }
-            if( infoSession.session_id==session_idrecup && infoSession.session_deadlinerecup==session_deadlinerecup){
+            if(infoSession.session_id==session_idrecup && infoSession.session_deadline==session_deadlinerecup){
                 return res.status(200).json({ error :"c'est ok !"});
             }
             else{
