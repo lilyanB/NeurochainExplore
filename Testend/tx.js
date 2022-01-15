@@ -31,52 +31,6 @@ console.log("public key is : " + clepub);
 console.log('    ')
 console.log("private key is : " + clepriv);
 
-/*
-
-const donné = axios.post('http://35.181.125.1:8001/api/e2708c6/wallets', {
-      publicKey: clepub,
-      privateKey: clepriv,
-    })
-    .then(function (response) {
-      const publicKeytra = response.data;
-      const privateKeytra = response.data;
-      var publicKeytrad = JSON.parse(publicKeytra).publicKey;
-      var privateKeytrad = JSON.parse(privateKeytra).privateKey;
-      console.log(publicKeytrad);
-      console.log(privateKeytrad);
-      return(publicKeytrad,privateKeytrad)
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-
-console.log(donné);
-
-
-const donné12 = axios.post('http://35.181.125.1:8001/api/e2708c6/wallets', {
-      publicKey: clepub,
-      privateKey: clepriv,
-    }, { synchronous: true })
-    .then(function (response){
-      return(response)
-    })
-
-console.log(donné12)
-*/
-
-/* async function getDonnees(){
-  try {
-      const resp = await axios.post('http://35.181.125.1:8001/api/e2708c6/wallets', {
-        publicKey: clepub,
-        privateKey: clepriv,
-      });
-      console.log(resp);
-  } catch (err) {
-      console.error(err);
-  }
-};
-getDonnees().then(console.log); */
-
 function tradkey () {
   return new Promise(function (response, reject) {
     axios.post('http://35.181.125.1:8001/api/e2708c6/wallets', {publicKey: clepub,privateKey: clepriv,})
@@ -118,14 +72,3 @@ function balance(key) {
       })
     });
 }
-
-/*
-const URl = 'http://35.181.125.1:8001/api/e2708c6/wallets/' + donné + '/balance'
-const donné1 = axios.get(URL)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-*/
