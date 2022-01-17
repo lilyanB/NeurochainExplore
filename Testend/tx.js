@@ -44,6 +44,20 @@ function tradkey () {
     });
   }
 
+function balance(key) {
+  return new Promise(function (response, reject) {
+    axios.get('http://35.181.125.1:8001/api/e2708c6/wallets/' + key + '/balance')
+      .then(function (res) {
+        console.log("votre balance est de : " + res.data.balance)
+        response(res);
+      })
+      .catch(function (err) {
+        // la requête db a échoué => appeler reject en incluant l'erreur
+        reject(new Error('meaningOfLife failed because ' + err));
+      })
+    });
+}
+
 tradkey()
   .then(function (answer) {
     //console.log('valeur retournée par meaningOfLife():', answer.data);
@@ -59,16 +73,45 @@ tradkey()
     console.error('meaningOfLife() a rapporté une erreur:', err);
   });
 
-function balance(key) {
+
+
+
+/* 
+Plus de précisions pour les étapes [1-3]:
+Créer un wallet A et un wallet B
+Check que les wallets ont bien un balance à 0
+Récupérer les bots dispo et effectuer une transaction de la part du “chosen” bot vers wallet A puis wallet B pour les fournir */
+
+function giveBot() {
   return new Promise(function (response, reject) {
-    axios.get('http://35.181.125.1:8001/api/e2708c6/wallets/' + key + '/balance')
+    axios.get('http://35.181.125.1:8001/api/e2708c6/bots')
       .then(function (res) {
-        console.log("votre balance est de : " + res.data.balance)
-        response(res);
+        var data = res.data;
+        //console.log(data)
+        Object.entries(data).forEach(
+            ([key, val]) => {
+            //([clé, valeur]) => console.log(valeur.botRole)
+            if (val.botRole === "chosen"){
+              //console.log(val)
+              response(val);
+            }
+            }
+        )
       })
       .catch(function (err) {
-        // la requête db a échoué => appeler reject en incluant l'erreur
-        reject(new Error('meaningOfLife failed because ' + err));
+        reject(new Error('recherche de chosen impossible ' + err));
       })
     });
-}
+  }
+
+giveBot()
+  .then(function (answer) {
+    const infobot = answer
+    const publicKeybot = infobot.publicKey;
+    const privateKeybot = infobot.privateKey;
+    console.log("public key of bot is : " + publicKeybot)
+    console.log("public key of bot is : " + privateKeybot)
+  })
+  .catch(function (err) {
+    console.error('impossible de récup info du bot', err);
+  });
