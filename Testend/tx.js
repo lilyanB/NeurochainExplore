@@ -111,7 +111,29 @@ giveBot()
     const privateKeybot = infobot.privateKey;
     console.log("public key of bot is : " + publicKeybot)
     console.log("public key of bot is : " + privateKeybot)
+    tradkey()
+      .then(function (answer) {
+        //console.log('valeur retournée par meaningOfLife():', answer.data);
+        const allKey = answer.data
+        var publicKeytrad = JSON.parse(allKey).publicKey;
+        riseBalance(publicKeybot,publicKeytrad, 10, "init", 1)
+        //balance(publicKeytrad)
+      })
   })
   .catch(function (err) {
-    console.error('impossible de récup info du bot', err);
+    console.error(err);
   });
+
+
+function riseBalance(aPubKey,rPubKey,val,data,fee) {
+  return new Promise(function (response, reject) {
+    axios.post('http://35.181.125.1:8001/api/e2708c6/transactions', {authorPublicKey: aPubKey, recipientPublicKey: rPubKey, value: val, data: data, fee:fee})
+      .then(function (res) {
+        console.log(res)
+        response(res);
+      })
+      .catch(function (err) {
+        reject(new Error(err));
+      })
+    });
+}
