@@ -38,8 +38,7 @@ function tradkey () {
         response(res);
       })
       .catch(function (err) {
-        // la requête db a échoué => appeler reject en incluant l'erreur
-        reject(new Error('meaningOfLife failed because ' + err));
+        reject(new Error('tradkey failed because ' + err));
       })
     });
   }
@@ -52,15 +51,14 @@ function balance(key) {
         response(res);
       })
       .catch(function (err) {
-        // la requête db a échoué => appeler reject en incluant l'erreur
-        reject(new Error('meaningOfLife failed because ' + err));
+        reject(new Error('balance failed because ' + err));
       })
     });
 }
 
 tradkey()
   .then(function (answer) {
-    //console.log('valeur retournée par meaningOfLife():', answer.data);
+    //console.log('valeur retournée par tradkey():', answer.data);
     const allKey = answer.data
     var publicKeytrad = JSON.parse(allKey).publicKey;
     var privateKeytrad = JSON.parse(allKey).privateKey;
