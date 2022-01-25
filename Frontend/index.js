@@ -23,10 +23,10 @@ expr.listen(4000, ()=>{
 
 expr.get('/',(req,res)=>{
     //res.sendFile(path.resolve(__dirname, 'dist/index.html'))
-    res.render('block_explorer.ejs') ;
+    res.render('login.ejs') ;
 })
 
-expr.get('/login',(req,res)=>{
+expr.get('/explore',(req,res)=>{
     //res.sendFile(path.resolve(__dirname, 'dist/about.html'))
-    res.render('login.ejs') ;
+    res.render('block_explorer.ejs') ;
   })
