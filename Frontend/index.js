@@ -11,6 +11,8 @@ expr.use(express.urlencoded({
 //EJS
 const ejs = require('ejs')
 //expr.set('view engine', 'ejs')
+expr.use(express.static('static'))
+
 
 var bodyParser = require('body-parser')
 expr.use( bodyParser.json() );       // to support JSON-encoded bodies
