@@ -1,30 +1,33 @@
 {
-  
+  
   "name": "myProject",
-  
+  
   "version": "1.0.0",
-  
+  
   "description": "",
-  
+  
   "main": "login.ejs",
-  
+  
   "scripts": {
-  
-    
+  
+    
   "log": "nodemon index.js"
-  
+  
   },
-  
+  
   "dependencies": {
-  
-    
+  
+    
+  "axios": "^0.25.0",
+  
+    
   "ejs": "^3.1.6",
-  
-    
+  
+    
   "express": "^4.17.2",
-  
-    
-  "nodemon": "^2.0.15" 
-  
+  
+    
+  "nodemon": "^2.0.15"
+  
   }
 }

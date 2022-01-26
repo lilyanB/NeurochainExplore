@@ -7,11 +7,13 @@ expr.use(express.urlencoded({
 }));
 
 
-
 //EJS
 const ejs = require('ejs')
-//expr.set('view engine', 'ejs')
 expr.use(express.static('static'))
+
+//router
+const router = require('./routes/router');
+expr.use('/', router);
 
 
 var bodyParser = require('body-parser')
@@ -22,13 +24,3 @@ expr.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 expr.listen(4000, ()=>{
   console.log('App listening on port 4000')
 })
-
-expr.get('/',(req,res)=>{
-    //res.sendFile(path.resolve(__dirname, 'dist/index.html'))
-    res.render('login.ejs') ;
-})
-
-expr.get('/explore',(req,res)=>{
-    //res.sendFile(path.resolve(__dirname, 'dist/about.html'))
-    res.render('block_explorer.ejs') ;
-  })
