@@ -5,10 +5,9 @@ class controller {
 
     static async login(req, res, next) {
         await axios.post('http://localhost:5000/info', { email: req.body.email , password:req.body.password})
-        console.log("api lancé")
         .then(function (reponse) {
-            console.log(reponse);
-            return reponse
+            //console.log(reponse);
+            return reponse.data
         })
         .catch(function (erreur) {
             console.log(erreur);
