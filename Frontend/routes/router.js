@@ -16,10 +16,10 @@ router.get('/explore',(req,res)=>{
     res.render('block_explorer.ejs') ;
   })
 
-router.post('/info',(req,res)=>{
-    //res.sendFile(path.resolve(__dirname, 'dist/about.html'))
-    res.render('block_explorer.ejs') ;
-    })
+router
+    .route("/info")
+    .post(controller.login)
+;
 
 
 module.exports = router;

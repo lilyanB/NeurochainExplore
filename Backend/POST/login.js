@@ -30,7 +30,8 @@ mongoose.connect('mongodb+srv://test:test@cluster0.sodaz.mongodb.net/loginNeuroc
 bodyParser = require('body-parser').json();
 
 //recup le form POST
-expr.post('/test', bodyParser, (req, res) => {
+expr.post('/info', bodyParser, (req, res) => {
+    console.log("recherche sur la base")
     const emailrecup = req.body.email
     const passwordrecup = req.body.password
     //console.log(emailrecup)
