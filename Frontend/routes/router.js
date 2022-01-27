@@ -17,7 +17,7 @@ router.get('/explore',(req,res)=>{
   })
 
 router
-    .route("/info")
+    .route("/log")
     .post(controller.login)
 ;
 

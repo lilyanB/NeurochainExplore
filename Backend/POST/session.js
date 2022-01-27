@@ -30,7 +30,7 @@ mongoose.connect('mongodb+srv://test:test@cluster0.sodaz.mongodb.net/loginNeuroc
 bodyParser = require('body-parser').json();
 
 //recup le form POST
-expr.post('/test', bodyParser, (req, res) => {
+expr.post('/session', bodyParser, (req, res) => {
     const session_idrecup = req.body.session_id
     const session_deadlinerecup = req.body.session_deadline
     //console.log(session_idrecup)

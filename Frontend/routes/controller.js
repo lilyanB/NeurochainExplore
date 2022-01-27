@@ -4,9 +4,9 @@ bodyParser = require('body-parser').json();
 class controller {
 
     static async login(req, res, next) {
-        await axios.post('http://localhost:5000/info', { email: req.body.email , password:req.body.password})
+        await axios.post('http://localhost:5000/log', { email: req.body.email , password:req.body.password})
         .then(function (reponse) {
-            //console.log(reponse);
+            console.log(reponse);
             return reponse.data
         })
         .catch(function (erreur) {
