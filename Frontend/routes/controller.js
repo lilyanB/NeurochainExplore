@@ -17,17 +17,10 @@ class controller {
                 session.idsession = req.data.idsession;
                 session.mail = req.data.mail;
                 res.redirect('/');
-            };
-            if (req.data.error === "400") {
-                console.log("erreur 400")
-            };
-            if (req.data.error === "500") {
-                console.log("tous bug")
-            };
-            
+            };            
         })
         .catch(function (erreur) {
-            console.log(erreur);
+            //console.log(erreur);
             res.redirect('/');
         })
     };

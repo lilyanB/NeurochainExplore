@@ -18,7 +18,6 @@ expr.use(session({
 
 
 router.get('/',(req,res)=>{
-    //res.sendFile(path.resolve(__dirname, 'dist/index.html'))
     if (typeof session.idsession == 'undefined') {
       res.render('login.ejs');
     }else{
@@ -26,18 +25,6 @@ router.get('/',(req,res)=>{
       res.render('block_explorer.ejs') ;
     }
 })
-
-// Logout endpoint
-/* router.get("/logout", function (req, res) {
-  console.log(session.idsession)
-  req.session.destroy((err) => {
-    if (err) {
-        console.log(err)
-    }
-
-    return res.redirect("/")
-})
-}); */
 
 // Logout endpoint
 router.get("/logout", function (req, res) {
