@@ -48,7 +48,7 @@ expr.post('/log', bodyParser, (req, res) => {
                 return res.status(400).json({ error : 'Mot de passe incorrect !'});
             }
             if( user.email==emailrecup && user.password==passwordrecup){
-                return res.status(200).json({ error :"c'est ok !"});
+                return res.status(200).json({ error :"c'est ok !", idsession : user.session_id, mail : user.email});
             }
             else{
                 return res.status(500).json({ error: 'tous bug' });
