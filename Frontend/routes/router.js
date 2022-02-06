@@ -1,45 +1,55 @@
 const { Router, application } = require("express");
 const router = new Router();
 
-const express = require('express')
+const express = require('express');
+const { Session } = require("express-session");
 const expr = new express()
 
 var session = require('express-session');
-const sess = new session()
 
 const controller = require("./controller.js");
-
-var sessi
-var oneDay = 60
 
 expr.use(session({
   secret: "secret",
   saveUninitialized:true,
-  cookie: { maxAge: oneDay },
+  cookie: { maxAge: 60*1000 },
   resave: false 
 }))
 
+
 router.get('/',(req,res)=>{
     //res.sendFile(path.resolve(__dirname, 'dist/index.html'))
-    sessi = req.session;
-    if (typeof sessi == 'undefined') {
+    if (typeof session.idsession == 'undefined') {
       res.render('login.ejs');
     }else{
+      console.log("ma session " + session.idsession)
       res.render('block_explorer.ejs') ;
     }
 })
 
-router.get('/logout',(req,res) => {
-    req.session.destroy();
-    res.redirect('/');
-  });
+// Logout endpoint
+/* router.get("/logout", function (req, res) {
+  console.log(session.idsession)
+  req.session.destroy((err) => {
+    if (err) {
+        console.log(err)
+    }
+
+    return res.redirect("/")
+})
+}); */
+
+// Logout endpoint
+router.get("/logout", function (req, res) {
+  delete session.idsession
+  delete session.mail
+  res.redirect("/")
+});
 
 router
     .route("/log")
     .post(controller.login , function(req, res) {
-      console.log(req);
-      console.log(res);
-      res.redirect("login.ejs")
+      console.log(req)
     });
 
 module.exports = router;
