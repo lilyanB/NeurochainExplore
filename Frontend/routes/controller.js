@@ -34,7 +34,8 @@ class controller {
             //console.log(req.status);
             /* 
             if (req.data.error === "200"){
-                 */console.log("sessions toujours valide")
+                 */
+                console.log("sessions toujours valide")
                 res.redirect('/');
             //};
             /* if (req.data.error === "400"){
