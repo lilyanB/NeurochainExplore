@@ -42,16 +42,16 @@ expr.post('/log', bodyParser, (req, res) => {
             //console.log(user.email)
             if(user == null){
                 console.log(user)
-                return res.status(400).json({ error: 'utilisateur non trouvé !'});
+                return res.status(400).json({ error: '400'});
             }
             if(user.password!=passwordrecup){
-                return res.status(400).json({ error : 'Mot de passe incorrect !'});
+                return res.status(400).json({ error : '400'});
             }
             if( user.email==emailrecup && user.password==passwordrecup){
-                return res.status(200).json({ error :"c'est ok !"});
+                return res.status(200).json({ error : '200', idsession : user.session_id, mail : user.email});
             }
             else{
-                return res.status(500).json({ error: 'tous bug' });
+                return res.status(500).json({ error: '500' });
             }
         })
     })

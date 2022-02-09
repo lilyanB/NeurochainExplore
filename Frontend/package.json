@@ -4,12 +4,13 @@
   "description": "",
   "main": "login.ejs",
   "scripts": {
-  "log": "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "dependencies": {
-  "axios": "^0.25.0",
-  "ejs": "^3.1.6",
-  "express": "^4.17.2",
-  "nodemon": "^2.0.15"
+    "axios": "^0.25.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "nodemon": "^2.0.15"
   }
 }
