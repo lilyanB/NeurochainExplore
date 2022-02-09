@@ -37,22 +37,25 @@ expr.post('/session', bodyParser, (req, res) => {
     //console.log(session_deadlinerecup)
     users.findOne({session_id: session_idrecup})
         .then(infoSession =>{
-            console.log("info sesions : " + infoSession)
-            console.log("info sesions id : " + infoSession.session_id)
+            //console.log("info sesions : " + infoSession)
+            //console.log("info sesions id : " + infoSession.session_id)
             const nouvelleDate = new Date()
             console.log("info date : " + nouvelleDate)
-            if(infoSession.session_id == null){
+            if(infoSession == null){
                 console.log(infoSession)
-                return res.status(400).json({ error: 'session non trouvé !'});
+                return res.status(400).json({ error: '400'});
             }
             if(infoSession.session_deadline<nouvelleDate){
-                return res.status(400).json({ error : 'deadline dépassé !'});
+                console.log("156 " +infoSession)
+                return res.status(400).json({ error : '400'});
             }
             if(infoSession.session_id==session_idrecup && infoSession.session_deadline>nouvelleDate){
-                return res.status(200).json({ error :"c'est ok !"});
+                console.log("15sdv6rth " +infoSession)
+                return res.status(200).json({ error : '200'});
             }
             else{
-                return res.status(500).json({ error: 'tous bug' });
+                console.log("15sdtv6 " +infoSession)
+                return res.status(500).json({ error: '500' });
             }
         })
     })

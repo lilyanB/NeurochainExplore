@@ -21,8 +21,12 @@ router.get('/',(req,res)=>{
     if (typeof session.idsession == 'undefined') {
       res.render('login.ejs');
     }else{
-      console.log("ma session " + session.idsession)
-      res.render('block_explorer.ejs') ;
+      if(controller.checkSession){
+        console.log("ma session " + session.idsession)
+        res.render('block_explorer.ejs') ;
+      }else{
+        res.render('login.ejs');
+      }
     }
 })
 
@@ -39,4 +43,11 @@ router
       console.log(req)
     });
 
+
+router
+    .route("/check")
+    .post(controller.checkSession , function(req, res) {
+      console.log(req)
+    });
+  
 module.exports = router;
