@@ -32,27 +32,30 @@ bodyParser = require('body-parser').json();
 //recup le form POST
 expr.post('/session', bodyParser, (req, res) => {
     const session_idrecup = req.body.session_id
-    const session_deadlinerecup = req.body.session_deadline
+    //const session_deadlinerecup = req.body.session_deadline
     //console.log(session_idrecup)
     //console.log(session_deadlinerecup)
     users.findOne({session_id: session_idrecup})
         .then(infoSession =>{
-            console.log(infoSession)
-            console.log(infoSession.session_deadline)
-            console.log(infoSession.session_id)
-            console.log(new Date())
-            if(infoSession.session_id == null){
+            //console.log("info sesions : " + infoSession)
+            //console.log("info sesions id : " + infoSession.session_id)
+            const nouvelleDate = new Date()
+            console.log("info date : " + nouvelleDate)
+            if(infoSession == null){
                 console.log(infoSession)
-                return res.status(400).json({ error: 'session non trouvé !'});
+                return res.status(400).json({ error: '400'});
             }
-            if(infoSession.session_deadline<new Date()){
-                return res.status(400).json({ error : 'deadline dépassé !'});
+            if(infoSession.session_deadline<nouvelleDate){
+                console.log("156 " +infoSession)
+                return res.status(400).json({ error : '400'});
             }
-            if(infoSession.session_id==session_idrecup && infoSession.session_deadline==session_deadlinerecup){
-                return res.status(200).json({ error :"c'est ok !"});
+            if(infoSession.session_id==session_idrecup && infoSession.session_deadline>nouvelleDate){
+                console.log("15sdv6rth " +infoSession)
+                return res.status(200).json({ error : '200'});
             }
             else{
-                return res.status(500).json({ error: 'tous bug' });
+                console.log("15sdtv6 " +infoSession)
+                return res.status(500).json({ error: '500' });
             }
         })
     })

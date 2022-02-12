@@ -1,6 +1,6 @@
 const { application } = require('express');
 const { isValidObjectId } = require('mongoose');
-const { count } = require('../models/Schema');
+const { count, db } = require('../models/Schema');
 const users = require('../models/Schema');
 
 
@@ -30,7 +30,7 @@ mongoose.connect('mongodb+srv://test:test@cluster0.sodaz.mongodb.net/loginNeuroc
 bodyParser = require('body-parser').json();
 
 //recup le form POST
-expr.post('/log', bodyParser, (req, res) => {
+expr.post('/log', bodyParser, async (req, res) => {
     console.log("recherche sur la base")
     const emailrecup = req.body.email
     const passwordrecup = req.body.password
@@ -48,6 +48,23 @@ expr.post('/log', bodyParser, (req, res) => {
                 return res.status(400).json({ error : '400'});
             }
             if( user.email==emailrecup && user.password==passwordrecup){
+                
+                const tempsSessionMin = 0.5;
+                var currentDate = new Date();
+                console.log(user.session_id)
+                var futureDate = new Date(currentDate.getTime() + tempsSessionMin*60000);
+                var myquery = {session_id : user.session_id};
+                var newvalues = {session_deadline : futureDate};
+                users.updateOne(myquery, newvalues, function (err, docs) {
+                    if (err){
+                        console.log(err)
+                    }
+                    else{
+                        console.log("Updated Docs : ", docs);
+                    }
+                })
+
+
                 return res.status(200).json({ error : '200', idsession : user.session_id, mail : user.email});
             }
             else{

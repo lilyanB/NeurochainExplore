@@ -19,10 +19,18 @@ expr.use(session({
 
 router.get('/',(req,res)=>{
     if (typeof session.idsession == 'undefined') {
+      console.log("iciiiii")
       res.render('login.ejs');
     }else{
-      console.log("ma session " + session.idsession)
-      res.render('block_explorer.ejs') ;
+      if(controller.checkSession){
+        console.log("ic")
+        res.redirect('/check');
+        console.log("ma session " + session.idsession)
+        //res.render('block_explorer.ejs') ;
+      }else{
+        console.log("ici")
+        res.render('login.ejs');
+      }
     }
 })
 
@@ -39,4 +47,11 @@ router
       console.log(req)
     });
 
+
+router
+    .route("/check")
+    .get(controller.checkSession , function(req, res) {
+      //console.log(req)
+    });
+  
 module.exports = router;

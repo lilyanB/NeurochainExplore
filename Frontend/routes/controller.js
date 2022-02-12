@@ -25,6 +25,23 @@ class controller {
         })
     };
 
+    static async checkSession(req, res, next) {
+        //console.log(session.idsession) =ok
+        await axios.post('http://localhost:6000/session', { session_id: session.idsession})
+        .then(function (req) {
+            console.log("sessions toujours valide")
+            res.render('block_explorer.ejs') ;
+            //res.redirect('/');        
+        })
+        .catch(function (erreur) {
+            console.log(erreur);
+            delete session.idsession;
+            delete session.mail;
+            console.log("sessions supprimé")
+            res.redirect('/');
+        })
+    };
+
 }
 
 module.exports = controller;
