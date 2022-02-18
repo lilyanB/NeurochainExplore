@@ -8,7 +8,10 @@ const sess = new session() */
 class controller {
 
     static async login(req, res, next) {
-        await axios.post('http://localhost:5000/log', { email: req.body.email , password:req.body.password})
+        var crypto = require('crypto');
+        var hash = crypto.createHash('sha256').update(req.body.password).digest('base64');
+        console.log(hash);
+        await axios.post('http://localhost:5000/log', { email: req.body.email , password: hash/* req.body.password */})
         .then(function (req) {
             //console.log(reponse.data.idsession);
             //console.log(req.data.error);
