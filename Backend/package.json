@@ -5,7 +5,8 @@
   "main": "login.js",
   "scripts": {
     "log": "nodemon POST/login.js",
-    "session": "nodemon POST/session.js"
+    "session": "nodemon POST/session.js",
+    "blocks": "nodemon POST/blocks.js"
   },
   "dependencies": {
     "express": "^4.17.2",
