@@ -8,6 +8,7 @@ const blocks = require('../models/Schema2');
 const express = require('express');
 const expr = new express()
 
+expr.use(express.json());
 // to support URL-encoded pass by POST
 expr.use(express.urlencoded({     
     extended: true

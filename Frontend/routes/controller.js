@@ -2,6 +2,14 @@ const axios = require('axios');
 const session = require('express-session');
 bodyParser = require('body-parser').json();
 
+const express = require('express');
+const expr = new express()
+
+expr.use(express.json());
+// to support URL-encoded pass by POST
+expr.use(express.urlencoded({     
+    extended: true
+    }))
 
 /* var session = require('express-session');
 const sess = new session() */
@@ -47,7 +55,9 @@ class controller {
     };
 
     static async afficheblock(req, res, next) {
-        console.log(req.body)
+        console.log(req.params);
+        console.log(req.query);
+        console.log(req.body);
         await axios.post('http://localhost:7000/blocks', { debut: "2"})
         .then(function (req) {
             //console.log(req.data)

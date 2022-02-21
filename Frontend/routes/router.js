@@ -16,6 +16,11 @@ expr.use(session({
   resave: false 
 }))
 
+expr.use(express.json());
+// to support URL-encoded pass by POST
+expr.use(express.urlencoded({     
+    extended: true
+    }))
 
 router.get('/',(req,res)=>{
     if (typeof session.idsession == 'undefined') {
