@@ -36,8 +36,8 @@ bodyParser = require('body-parser').json();
 expr.post('/blocks', bodyParser, async (req, res) => {
     console.log("recherche sur la base")
     let debut = parseInt(req.body.debut);
-    console.log(debut)
-    const result2 = await blocks.find({ "branchPath.blockNumbers": { $gte: debut } }).sort( { 'branchPath.blockNumbers': 1 }).limit(10);
+    //console.log(debut)
+    const result2 = await blocks.find({ "branchPath.blockNumbers": { $gte: debut } }).sort( { 'branchPath.blockNumbers': 1 }).limit(12);
     
     let blockId = [];
     let pubkey = [];
@@ -51,6 +51,6 @@ expr.post('/blocks', bodyParser, async (req, res) => {
         blockNumber.push(element.branchPath.blockNumbers)
     });
     //console.log(blockId)
-    res.json( {id: blockId, pubkey: pubkey, signature:signature, blockNumber:blockNumber} );
+    res.json( {numero: req.body.debut, id: blockId, pubkey: pubkey, signature:signature, blockNumber:blockNumber} );
 
     })
