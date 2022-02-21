@@ -2,6 +2,7 @@ const axios = require('axios');
 const session = require('express-session');
 bodyParser = require('body-parser').json();
 
+
 /* var session = require('express-session');
 const sess = new session() */
 
@@ -42,6 +43,18 @@ class controller {
             delete session.mail;
             console.log("sessions supprimé")
             res.redirect('/');
+        })
+    };
+
+    static async afficheblock(req, res, next) {
+        console.log(req.body)
+        await axios.post('http://localhost:7000/blocks', { debut: "2"})
+        .then(function (req) {
+            //console.log(req.data)
+            res.redirect('/');        
+        })
+        .catch(function (erreur) {
+            console.log(erreur);
         })
     };
 

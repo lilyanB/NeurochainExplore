@@ -49,7 +49,7 @@ expr.post('/log', bodyParser, async (req, res) => {
             }
             if( user.email==emailrecup && user.password==passwordrecup){
                 
-                const tempsSessionMin = 0.1;
+                const tempsSessionMin = 60;
                 var currentDate = new Date();
                 console.log(user.session_id)
                 var futureDate = new Date(currentDate.getTime() + tempsSessionMin*60000);

@@ -19,7 +19,7 @@ expr.use(session({
 
 router.get('/',(req,res)=>{
     if (typeof session.idsession == 'undefined') {
-      console.log("iciiiii")
+      //console.log("iciiiii")
       res.render('login.ejs');
     }else{
       if(controller.checkSession){
@@ -53,5 +53,14 @@ router
     .get(controller.checkSession , function(req, res) {
       //console.log(req)
     });
+
+bodyParser = require('body-parser').json();
+
+router
+    .route("/afficheblock")
+    .post(controller.afficheblock , function(req, res) {
+      console.log(req)
+    });
+
   
 module.exports = router;
