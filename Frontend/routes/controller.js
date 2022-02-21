@@ -55,17 +55,18 @@ class controller {
     };
 
     static async afficheblock(req, res, next) {
-        console.log(req.params);
-        console.log(req.query);
+        //console.log(req.params);
+        //console.log(req.query);
         console.log(req.body);
-        await axios.post('http://localhost:7000/blocks', { debut: "2"})
-        .then(function (req) {
+        //await axios.post('http://localhost:7000/blocks', { debut: "2"})
+        //.then(function (req) {
             //console.log(req.data)
-            res.redirect('/');        
-        })
-        .catch(function (erreur) {
-            console.log(erreur);
-        })
+        //    res.redirect('/');        
+        //})
+        //.catch(function (erreur) {
+        //    console.log(erreur);
+        //})
+        res.send(req.body);
     };
 
 }

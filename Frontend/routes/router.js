@@ -1,14 +1,12 @@
 const { Router, application } = require("express");
 const router = new Router();
-
-const express = require('express');
-const { Session } = require("express-session");
-const expr = new express()
-
-var session = require('express-session');
-
 const controller = require("./controller.js");
 
+
+const { Session } = require("express-session");
+var session = require('express-session');
+const express = require('express');
+const expr = new express()
 expr.use(session({
   secret: "secret",
   saveUninitialized:true,
