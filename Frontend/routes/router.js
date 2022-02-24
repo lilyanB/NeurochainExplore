@@ -14,6 +14,19 @@ expr.use(session({
   resave: false 
 }))
 
+/* const auth  = async (req, res, next) => {
+  console.log("middelwaire")
+  let b = await controller.checkSession();
+  if (b == 200 ) {
+    next()
+  } else {
+    res.status(401).send('Unauthorized')
+  }
+  
+};
+
+router.use(auth); */
+
 /* expr.use(express.json());
 // to support URL-encoded pass by POST
 expr.use(express.urlencoded({     

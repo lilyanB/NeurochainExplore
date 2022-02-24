@@ -43,14 +43,16 @@ class controller {
         .then(function (req) {
             console.log("sessions toujours valide")
             res.redirect('/afficheblock?numero=1');
-            //res.redirect('/');        
+            //res.send(200)
+                    
         })
         .catch(function (erreur) {
-            console.log(erreur);
+            //console.log(erreur);
             delete session.idsession;
             delete session.mail;
             console.log("sessions supprimé")
             res.redirect('/');
+            //res.send(401)
         })
     };
 
