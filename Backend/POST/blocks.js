@@ -35,7 +35,7 @@ bodyParser = require('body-parser').json();
 //recup le form POST
 expr.get('/blocks', bodyParser, async (req, res) => {
     console.log("recherche sur la base")
-    console.log(req.query.numero);
+    //console.log(req.query.numero);
     let debut = parseInt(req.query.numero);
     //console.log(debut)
     const result2 = await blocks.find({ "branchPath.blockNumbers": { $gte: debut } }).sort( { 'branchPath.blockNumbers': 1 }).limit(12);

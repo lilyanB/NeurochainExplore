@@ -43,7 +43,6 @@ class controller {
         .then(function (req) {
             console.log("sessions toujours valide")
             res.redirect('/afficheblock?numero=1');
-            //res.render('block_explorer.ejs') ;
             //res.redirect('/');        
         })
         .catch(function (erreur) {
@@ -64,7 +63,6 @@ class controller {
         .catch(function (erreur) {
             console.log(erreur);
         })
-        //res.send(req.query);
     };
 
 }
