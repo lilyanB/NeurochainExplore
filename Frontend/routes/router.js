@@ -7,7 +7,6 @@ const { Session } = require("express-session");
 var session = require('express-session');
 const express = require('express');
 const expr = new express()
-
 expr.use(session({
   secret: "secret",
   saveUninitialized:true,
@@ -15,11 +14,11 @@ expr.use(session({
   resave: false 
 }))
 
-expr.use(express.json());
+/* expr.use(express.json());
 // to support URL-encoded pass by POST
 expr.use(express.urlencoded({     
     extended: true
-    }))
+    })) */
 
 router.get('/',(req,res)=>{
     if (typeof session.idsession == 'undefined') {
@@ -62,7 +61,7 @@ bodyParser = require('body-parser').json();
 
 router
     .route("/afficheblock")
-    .post(controller.afficheblock , function(req, res) {
+    .get(controller.afficheblock , function(req, res) {
       console.log(req)
     });
 

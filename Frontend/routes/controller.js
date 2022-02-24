@@ -42,7 +42,8 @@ class controller {
         await axios.post('http://localhost:6000/session', { session_id: session.idsession})
         .then(function (req) {
             console.log("sessions toujours valide")
-            res.render('block_explorer.ejs') ;
+            res.redirect('/afficheblock?numero=1');
+            //res.render('block_explorer.ejs') ;
             //res.redirect('/');        
         })
         .catch(function (erreur) {
@@ -55,15 +56,15 @@ class controller {
     };
 
     static async afficheblock(req, res, next) {
-        //console.log(req.body);
-        await axios.post('http://localhost:7000/blocks', { debut: req.body.debut})
+        //console.log(req.query);
+        await axios.get('http://localhost:7000/blocks?numero=' + req.query.numero)
         .then(function (req) {
             res.render('block_explorer.ejs', {info : req.data})    
         })
         .catch(function (erreur) {
             console.log(erreur);
         })
-        //res.send(req.body);
+        //res.send(req.query);
     };
 
 }
