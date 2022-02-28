@@ -40,21 +40,21 @@ expr.post('/session', bodyParser, (req, res) => {
             //console.log("info sesions : " + infoSession)
             //console.log("info sesions id : " + infoSession.session_id)
             const nouvelleDate = new Date()
-            console.log("info date : " + nouvelleDate)
+            //console.log("info date : " + nouvelleDate)
             if(infoSession == null){
                 console.log(infoSession)
                 return res.status(400).json({ error: '400'});
             }
             if(infoSession.session_deadline<nouvelleDate){
-                console.log("156 " +infoSession)
+                console.log("deadlinedépassé " +infoSession)
                 return res.status(400).json({ error : '400'});
             }
             if(infoSession.session_id==session_idrecup && infoSession.session_deadline>nouvelleDate){
-                console.log("15sdv6rth " +infoSession)
+                console.log("sessionvalide " +infoSession)
                 return res.status(200).json({ error : '200'});
             }
             else{
-                console.log("15sdtv6 " +infoSession)
+                console.log("erreur : " +infoSession)
                 return res.status(500).json({ error: '500' });
             }
         })

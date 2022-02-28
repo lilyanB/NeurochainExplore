@@ -19,7 +19,7 @@ class controller {
     static async login(req, res, next) {
         var crypto = require('crypto');
         var hash = crypto.createHash('sha256').update(req.body.password).digest('base64');
-        console.log(hash);
+        //console.log(hash);
         await axios.post('http://localhost:5000/log', { email: req.body.email , password: hash/* req.body.password */})
         .then(function (req) {
             //console.log(reponse.data.idsession);
@@ -28,6 +28,8 @@ class controller {
             if (req.data.error === "200"){
                 session.idsession = req.data.idsession;
                 session.mail = req.data.mail;
+                //console.log("id " + session.idsession)
+                //console.log("mail " + session.mail)
                 res.redirect('/');
             };            
         })
@@ -37,22 +39,19 @@ class controller {
         })
     };
 
+    
     static async checkSession(req, res, next) {
-        //console.log(session.idsession) =ok
+        //console.log("ma session :" + session.idsession)
         await axios.post('http://localhost:6000/session', { session_id: session.idsession})
-        .then(function (req) {
-            console.log("sessions toujours valide")
-            res.redirect('/afficheblock?numero=1');
-            //res.send(200)
-                    
+        .then(function () {
+            //console.log("session good")
+            return res.status(200)      
         })
-        .catch(function (erreur) {
-            //console.log(erreur);
+        .catch(function () {
             delete session.idsession;
             delete session.mail;
-            console.log("sessions supprimé")
-            res.redirect('/');
-            //res.send(401)
+            //console.log("session delete")
+            return res.status(401)
         })
     };
 
