@@ -14,8 +14,10 @@
     <div class="row">
       <div class="col-12 text-center">
         <h1>Block Explorer</h1>
-        <button type="button" class="page-précendente">Page Précédente</button>
-        <button type="button" class="Page-Suivante">Page Suivante</button>
+          <button type="button" class="page-précendente">-10</button>
+          <button type="button" class="page-précendente">+10</button>
+          <button type="button" class="Page-Suivante">+100</button>
+          <button type="button" class="Page-Suivante">-100</button>
       </div>
     </div>
 
@@ -24,15 +26,17 @@
         <h3><strong>Block One</strong></h3>
 
         <p class="lead">Author</p>
-        <p><span>Public key : </span></p>
-        <p> Signature : </p>
+        <p>BlockID: <%= info.id[2] %></p>
+        <p><span>Public key : <%= info.pubkey[2] %> </span></p>
+        <p> Signature : <%= info.signature[2] %></p>
       </div>
       <div class="col-12 col-md-6 col-lg-5 m-auto pt-3 pt-md-0">
         <h3><strong>Block Two</strong></h3>
 
         <p class="lead">Author</p>
-        <p><span>Public key : </span></p>
-        <p> Signature : </p>
+        <p>BlockID: <%= info.id[3] %></p>
+        <p><span>Public key : <%= info.pubkey[3] %></span></p>
+        <p> Signature : <%= info.signature[3] %></p>
       </div>
     </div>
 
@@ -41,18 +45,18 @@
         <h3><strong>Block Three</strong></h3>
 
         <p>Author</p>
-        <p>BlockID:</p>
-        <p><span>Public key : </span></p>
-        <p> Signature : </p>
+        <p>BlockID: <%= info.id[4] %></p>
+        <p><span>Public key : <%= info.pubkey[4] %></span></p>
+        <p> Signature : <%= info.signature[4] %></p>
         
       </div>
       <div class="col-12 col-md-6 col-lg-5 m-auto pt-3 pt-lg-0">
         <h3><strong>Block Four</strong></h3>
 
         <p class="lead">Author</p>
-        <p>BlockID:</p>
-        <p><span>Public key : </span></p>
-        <p> Signature : </p>
+        <p>BlockID: <%= info.id[5] %></p>
+        <p><span>Public key : <%= info.pubkey[5] %></span></p>
+        <p> Signature : <%= info.signature[5] %></p>
         </p>
       </div>
 
@@ -61,18 +65,18 @@
           <h3><strong>Block five</strong></h3>
   
           <p class="lead">Author</p>
-          <p>BlockID:</p>
-          <p><span>Public key : </span></p>
-          <p> Signature : </p>
+          <p>BlockID: <%= info.id[6] %></p>
+          <p><span>Public key : <%= info.pubkey[6] %></span></p>
+          <p> Signature : <%= info.signature[6] %></p>
           </p>
         </div>
         <div class="col-12 col-md-6 col-lg-5 m-auto pt-3 pt-md-0">
           <h3><strong>Block six</strong></h3>
   
           <p class="lead">Author</p>
-          <p>BlockID:</p>
-          <p><span>Public key : </span></p>
-          <p> Signature : </p>
+          <p>BlockID: <%= info.id[7] %></p>
+          <p><span>Public key : <%= info.pubkey[7] %></span></p>
+          <p> Signature : <%= info.signature[7] %></p>
           </p>
         </div>
       
@@ -82,18 +86,18 @@
         <h3><strong>Block seven</strong></h3>
 
         <p class="lead">Author</p>
-        <p>BlockID:</p>
-        <p><span>Public key : </span></p>
-        <p> Signature : </p>
+        <p>BlockID: <%= info.id[8] %></p>
+        <p><span>Public key : <%= info.pubkey[8] %></span></p>
+        <p> Signature : <%= info.signature[8] %></p>
         </p>
       </div>
       <div class="col-12 col-md-6 col-lg-5 m-auto pt-3 pt-lg-0">
         <h3><strong>Block eight</strong></h3>
 
         <p class="lead">Author</p>
-        <p>BlockID:</p>
-        <p><span>Public key : </span></p>
-        <p> Signature : </p>
+        <p>BlockID: <%= info.id[9] %></p>
+        <p><span>Public key : <%= info.pubkey[9] %></span></p>
+        <p> Signature : <%= info.signature[9] %></p>
       </p>
     </div>
     
@@ -101,29 +105,25 @@
         <h3><strong>Block nine</strong></h3>
 
         <p class="lead">Author</p>
-        <p>BlockID:</p>
-        <p><span>Public key : </span></p>
-        <p> Signature : </p>
+        <p>BlockID: <%= info.id[10] %></p>
+        <p><span>Public key : <%= info.pubkey[10] %></span></p>
+        <p> Signature : <%= info.signature[10] %></p>
         </p>
       </div>
       <div class="col-12 col-md-6 col-lg-5 m-auto pt-3 pt-lg-0">
         <h3><strong>Block ten</strong></h3>
 
         <p class="lead">Author</p>
-        <p>BlockID:</p>
-        <p><span>Public key : </span></p>
-        <p> Signature : </p>
+        <p>BlockID: <%= info.id[11] %></p>
+        <p><span>Public key : <%= info.pubkey[11] %></span></p>
+        <p> Signature : <%= info.signature[11] %></p>
       </p>
     
   </div>
 </section>
-<section class="fdb-block fp-active" data-block-type="features" data-id="2" draggable="true">
-
-   
-
-    
+<section class="fdb-block fp-active" data-block-type="features" data-id="2" draggable="true">    
   </div>
 </section>
 
-            </body>
-            </html>
+</body>
+ </html>
