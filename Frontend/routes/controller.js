@@ -57,7 +57,11 @@ class controller {
 
     static async afficheblock(req, res, next) {
         //console.log(req.query);
-        await axios.get('http://localhost:7000/blocks?numero=' + req.query.numero)
+        var numero = req.query.numero
+        if(numero < 1){
+            numero = 1
+        }        
+        await axios.get('http://localhost:7000/blocks?numero=' + numero)
         .then(function (req) {
             res.render('block_explorer.ejs', {info : req.data})    
         })

@@ -14,10 +14,10 @@
     <div class="row">
       <div class="col-12 text-center">
         <h1>Block Explorer</h1>
-          <button type="button" class="page-précendente">-10</button>
-          <button type="button" class="page-précendente">+10</button>
-          <button type="button" class="Page-Suivante">+100</button>
-          <button type="button" class="Page-Suivante">-100</button>
+          <button type="button" id="-10">-10</a></button>
+          <button type="button" id="+10">+10</button>
+          <button type="button" id="+100">+100</button>
+          <button type="button" id="-100">-100</button>
       </div>
     </div>
 
@@ -126,4 +126,49 @@
 </section>
 
 </body>
- </html>
+
+<script type="text/javascript">
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const numeroactuelleStr = urlParams.get('numero')
+  const numeroactuelle = Number(numeroactuelleStr)
+
+
+
+  document.getElementById("+10").onclick = function () {
+    const num = numeroactuelle + 10;
+    if(num < 0){
+      location.href = 'http://localhost:4000/afficheblock?numero=1';
+    }else{
+      location.href = 'http://localhost:4000/afficheblock?numero=' + num;
+    }
+  };
+  document.getElementById("+100").onclick = function (req,res) {
+    const num = numeroactuelle + 100;
+    if(num < 0){
+      location.href = 'http://localhost:4000/afficheblock?numero=1';
+    }else{
+      location.href = 'http://localhost:4000/afficheblock?numero=' + num;
+    }
+  };
+  document.getElementById("-10").onclick = function (req,res) {
+    const num = numeroactuelle - 10;
+    if(num < 0){
+      location.href = 'http://localhost:4000/afficheblock?numero=1';
+    }else{
+      location.href = 'http://localhost:4000/afficheblock?numero=' + num;
+    }
+    
+  };
+  document.getElementById("-100").onclick = function (req,res) {
+    const num = numeroactuelle - 100;
+    if(num < 0){
+      location.href = 'http://localhost:4000/afficheblock?numero=1';
+    }else{
+      location.href = 'http://localhost:4000/afficheblock?numero=' + num;
+    }
+  };
+</script>
+
+
+</html>
