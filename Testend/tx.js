@@ -78,6 +78,7 @@ function tradkey2 () {
 
 function balance(key) {
   return new Promise(function (response, reject) {
+    console.log(key)
     axios.get('http://35.181.125.1:8001/api/e2708c6/wallets/' + key + '/balance')
       .then(function (res) {
         console.log("votre balance est de : " + res.data.balance)
@@ -101,7 +102,7 @@ tradkey()
     balance(publicKeytrad)
   })
   .catch(function (err) {
-    console.error('meaningOfLife() a rapporté une erreur:', err);
+    console.error('une erreur:', err);
   });
 
 tradkey2()
@@ -116,11 +117,8 @@ tradkey2()
   balance(publicKeytrad)
 })
 .catch(function (err) {
-  console.error('meaningOfLife() a rapporté une erreur:', err);
+  console.error('une erreur:', err);
 });
-
-
-
 
 /* 
 Plus de précisions pour les étapes [1-3]:
