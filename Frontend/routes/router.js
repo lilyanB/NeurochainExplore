@@ -67,5 +67,11 @@ router
       console.log(req)
     });
 
+router
+    .route("/stat")
+    .get(controller.stat , function(req, res) {
+      console.log(req)
+    });
+
   
 module.exports = router;

@@ -55,3 +55,23 @@ expr.get('/blocks', bodyParser, async (req, res) => {
     res.json( {numero: req.body.debut, id: blockId, pubkey: pubkey, signature:signature, blockNumber:blockNumber} );
 
     })
+
+expr.get('/stat', bodyParser, async (req, res) => {
+    console.log("recherche sur la base pour stat")
+    //console.log(req.query.numero);
+    let debut = parseInt(req.query.numero);
+    //console.log(debut)
+    const result2 = await blocks.find().limit(500);
+    //console.log(result2)
+    let pubkey = [];
+    let valeur = [];
+
+    result2.forEach(element => {
+        pubkey.push(element.block.header.author.keyPub.rawData)
+        //console.log(element.block.header.author.keyPub.rawData)
+        valeur.push(element.balances[0].value.value)
+        //console.log(element.balances[0].value.value)
+    });
+    res.json( {pubkey: pubkey, valeur: valeur} );
+
+    })

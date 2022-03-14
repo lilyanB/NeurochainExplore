@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <p><a href="http://localhost:4000/afficheblock?numero=1">Blocks Explorer</a></p>
+    <h1>Stat</h1>
+    <p><%= info.pubkey[1] %></p>
+    <p><%= info.pubkey[2] %></p>
+    <p><%= info.pubkey[3] %></p>
+    <p><%= info.pubkey[4] %></p>
+    <p><%= info.valeur[1] %></p>
+    <p><%= info.valeur[2] %></p>
+    <p><%= info.valeur[3] %></p>
+    <p><%= info.valeur[4] %></p>
+</html>
+<script>
+    //console.log("<%= info.valeur[0]%>")
+    var donner = "<%= info.valeur%>"
+    var donner = donner.split(",")
+    var b = donner.length
+    console.log("la taille : " + b)
+    var tableau = []
+    for (i = 0 ; i<b ; i++){
+        //console.log("caaaaa: " + donner[i])
+        tableau.push(donner[i])
+    }
+    //console.log(tableau)
+    //var tableau = parseInt("<%= info.valeur %>")
+    //console.log(typeof(tableau))
+    function numAverage(a) {
+        var b = a.length,
+            c = 0, i;
+        for (i = 0; i < b; i++){
+            c += Number(a[i]);
+            //console.log(c)
+            }
+        return c/b;
+    }
+
+    console.log(numAverage(tableau))
+</script>

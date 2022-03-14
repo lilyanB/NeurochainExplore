@@ -4,6 +4,7 @@
   "description": "",
   "main": "login.js",
   "scripts": {
+    "start": "nodemon POST/requete.js",
     "log": "nodemon POST/login.js",
     "session": "nodemon POST/session.js",
     "blocks": "nodemon POST/blocks.js"
