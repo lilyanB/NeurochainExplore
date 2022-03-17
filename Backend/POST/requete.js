@@ -16,7 +16,7 @@ expr.use(express.urlencoded({
 
 // app disponible sur le port 4000
 expr.listen(7777, ()=>{
-    console.log('App listening on port 7000')
+    console.log('App listening on port 7777')
 })
 
 
